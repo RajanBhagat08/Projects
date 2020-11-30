@@ -1,0 +1,22 @@
+{% extends 'manager/index.html' %}
+{% block body_block %}
+
+<div class="jumbotron container" style="margin-top:15px" >
+  <p class="display-4">Details of tasks assigned</p>
+</div>
+  <div class="jumbotron container" style="width: 50%;background: #2C3E50; background: -webkit-linear-gradient(to right, #4CA1AF, #2C3E50);
+  background: linear-gradient(to right, #4CA1AF, #2C3E50);">
+      <h2 class="font-weight-light text-white">Project= {{ project }}</h2>
+      <h2 class="font-weight-light text-white">Task assigned= {{ task }}</h2>
+      <h2 class="font-weight-light text-white">Project Lead= {{ head }}</h2>
+      <h2 class="font-weight-light text-white">Deadline= {{ deadline }}</h2>
+      <form  action="{% url 'manager:home_mem' %}" method="post">
+        {% csrf_token %}
+        <input type="radio" id="Approved" name="approve" value="yes">
+        <label style="color: white" for="Approved">Done</label>
+
+        <input type="submit" class="btn btn-primary" name="" value="Submit">
+      </form>
+  </div>
+
+{% endblock %}

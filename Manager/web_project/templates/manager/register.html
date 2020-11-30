@@ -1,0 +1,20 @@
+{% extends 'manager/index.html' %}
+
+{% block body_block %}
+
+<div class="jumbotron special container col-8" style="background: #2C3E50; background: -webkit-linear-gradient(to right, #4CA1AF, #2C3E50);
+background: linear-gradient(to right, #4CA1AF, #2C3E50);" >
+    {% if registered %}
+      <p class="display-3">Thank you for registering</p>
+    {% else %}
+    <p class="display-4" style="color:white";>Register Here</p>
+
+    <form enctype="multipart/form-data"  method="POST">
+      {% csrf_token %}
+      {{ def_form.as_p }}
+      {{ form.as_p }}
+      <input type="submit"  class="btn btn-primary" name="" value="Register">
+    </form>
+    {% endif %}
+</div>
+{% endblock %}

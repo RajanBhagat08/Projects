@@ -1,0 +1,32 @@
+{% extends 'manager/index.html' %}
+
+{% block body_block %}
+
+<div class="jumbotron container">
+    <p class="display-4">Go to completed work <a class="btn btn-success" href="{%  url 'manager:completed' %}" role="button">completed</a></p>
+</div>
+<div class="jumbotron container">
+    <p class="display-4">Go to Incomplete works <a class="btn btn-success" href="{%  url 'manager:yet_to_completed' %}" role="button">Incomplete</a></p>
+</div>
+<div class="jumbotron special container col-8" style="background: #2C3E50; background: -webkit-linear-gradient(to right, #4CA1AF, #2C3E50);
+background: linear-gradient(to right, #4CA1AF, #2C3E50);" >
+    <div class="jumbotron">
+        {% if not_exist %}
+        <p class="display-3" style="color:rgb(216, 33, 33)">oops!! no such member registered!!</p>
+        {% endif %}
+    </div>
+    
+
+    {% if assigned %}
+      <p class="display-3">Work has been assigned!</p>
+    {% else %}
+    <p class="display-4" style="color:white";>Lets start a project and assign some work!</p>
+
+    <form enctype="multipart/form-data"  method="POST">
+      {% csrf_token %}
+      {{ def_form.as_p }}
+      <input type="submit"  class="btn btn-primary" name="" value="submit">
+    </form>
+    {% endif %}
+</div>
+{% endblock %}

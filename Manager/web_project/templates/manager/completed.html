@@ -1,0 +1,20 @@
+{% extends 'manager/index.html' %}
+{% block body_block %}
+
+
+<div class="jumbotron container" style="margin-top: 25px;">
+  <p class="display-4">Here are the Details</p>
+</div>
+<div class="jumbotron  container" style="width: 45%;">
+    {% for app_form in approved_forms %}
+      <div class="jumbotron" style="background: #7DF088;">
+        <h3 class="font-weight-light">Details of completed works</h3>
+        <h4 class="font-weight-light">Project : {{ app_form.project }}</h4>
+        <h4 class="font-weight-light">work Assigned : {{ app_form.work_given }}</h4>
+        <h4 class="font-weight-light">Deadline: {{ app_form.deadline }}</h4>
+        <h4 class="font-weight-light">Member : {{ app_form.work_given_to }}</h4>
+      </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
